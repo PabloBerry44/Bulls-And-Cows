@@ -4,8 +4,7 @@ diff = int(input("Choose game difficulty 1-9: "))
 def check():
 #check if there are similarities and print gained points
     userInput = input("\nInsert {} digit code: ".format(diff))
-    digits = userInput.isnumeric()
-    if digits == True:
+    if userInput.isnumeric():
         if len(userInput) != diff:
             print("Wrong amonut of digits!")
             check()
@@ -14,9 +13,7 @@ def check():
             for x in userInput:
                 x=int(x)
                 userCode.append(x)
-            cows = 0
-            bulls =0
-            q = 0
+                cows = bulls = q  = 0
             while q < len(userCode):
                 if userCode[q] == randomCode[q]: cows+=1
                 elif userCode[q] in randomCode: bulls+=1
