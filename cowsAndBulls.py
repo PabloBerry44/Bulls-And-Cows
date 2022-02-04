@@ -2,33 +2,27 @@ import random
 print("Welcome to Cows and Bulls game!\n\n")
 diff = int(input("Choose game difficulty 1-9: "))
 def check():
-#check if there are similarities and print gained points
-    userInput = input("\nInsert {} digit code: ".format(diff))
-    if userInput.isnumeric():
-        if len(userInput) != diff:
+    userCode = input("\nInsert {} digit code: ".format(diff))
+    if userCode.isnumeric():
+        if len(userCode) != diff:
             print("Wrong amonut of digits!")
             check()
         else:
-            userCode=[]
-            for x in userInput:
-                x=int(x)
-                userCode.append(x)
-                cows = bulls = q  = 0
+            cows = bulls = q  = 0
             while q < len(userCode):
-                if userCode[q] == randomCode[q]: cows+=1
-                elif userCode[q] in randomCode: bulls+=1
+                if int(userCode[q]) == randomCode[q]: cows+=1
+                elif int(userCode[q]) in randomCode: bulls+=1
                 q+=1
             if cows == 1: print("You have {} cow".format(cows))
             else: print("You have {} cows".format(cows))
             if bulls == 1: print("You have {} bull".format(bulls))
             else: print("You have {} bulls".format(bulls))
-            if cows == len(userCode): print("\nYou win!")
+            if cows == diff: print("\nYou win!")
             else:
                 check()
     else: 
         print("Insert digits only!")
         check()
-#create random code and save it to an array
 randomCode = []
 def getRandom():
     y = random.randint(1, 9)
